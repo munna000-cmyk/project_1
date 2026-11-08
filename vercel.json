@@ -1,19 +1,13 @@
 {
   "$schema": "https://openapi.vercel.sh/vercel.json",
   "installCommand": "npm run install:all",
-  "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "server/src/index.js",
-      "use": "@vercel/node"
+  "buildCommand": "cd client && npx vite build",
+  "outputDirectory": "client/dist",
+  "functions": {
+    "server/src/index.js": {
+      "maxDuration": 10
     }
-  ],
+  },
   "rewrites": [
     {
       "source": "/api/(.*)",
@@ -21,7 +15,7 @@
     },
     {
       "source": "/(.*)",
-      "destination": "/client/$1"
+      "destination": "/client/dist/$1"
     }
   ]
 }
