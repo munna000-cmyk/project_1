@@ -1,27 +1,23 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "installCommand": "npm run install:all",
-  "builds": [
-    {
-      "src": "client/package.json",
-      "use": "@vercel/static-build",
-      "config": {
-        "distDir": "dist"
-      }
-    },
-    {
-      "src": "server/src/index.js",
-      "use": "@vercel/node"
-    }
+  "name": "vizag-explorer-root",
+  "version": "1.0.0",
+  "description": "VIZAG EXPLORER — Full-Stack 3D Tourism Platform for Visakhapatnam, Andhra Pradesh",
+  "scripts": {
+    "start": "node server/src/index.js",
+    "dev:server": "cd server && npm run dev",
+    "dev:client": "cd client && npm run dev",
+    "build:client": "cd client && npm run build",
+    "install:all": "cd server && npm install && cd ../client && npm install"
+  },
+  "keywords": [
+    "threejs",
+    "react-three-fiber",
+    "vizag",
+    "visakhapatnam",
+    "tourism",
+    "3d-web",
+    "andhra-pradesh"
   ],
-  "rewrites": [
-    {
-      "source": "/api/(.*)",
-      "destination": "/server/src/index.js"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/client/$1"
-    }
-  ]
+  "author": "Antigravity Senior Full-Stack 3D Specialist",
+  "license": "MIT"
 }
